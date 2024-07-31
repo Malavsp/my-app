@@ -59,8 +59,8 @@ export default function Form({ categories }: { categories: CategoryField[] }) {
         <option value="" disabled>
           Select category
         </option>
-        {categories.map((category) => (
-          <option key={category.id} value={category.category}>
+        {categories.map((category, i) => (
+          <option key={i} value={category.category}>
             {category.category}
           </option>
         ))}
