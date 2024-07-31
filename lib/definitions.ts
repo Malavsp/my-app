@@ -12,15 +12,15 @@ export type User = {
   id: number;
   name: string;
   email: string;
-  password: number;
+  password: string;
 };
 
 export type CategoryField = {
-  id: string;
   category: string;
 };
 
 export type Authorfield = {
   id: string;
+  author: string;
   name: string;
 };
