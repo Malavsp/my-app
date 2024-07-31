@@ -1,20 +1,10 @@
 import React from "react";
-import Image from "next/image";
 import { Blog } from "@/lib/definitions";
 import Link from "next/link";
 
 const BlogItem = ({ blogs }: { blogs: Blog }) => {
   return (
     <div className="max-w-[330px] sm:max-w-[300px] bg-white border border-black hover:shadow-2xl">
-      <Link href={`dashboard/blogs/${blogs.id}`}>
-        <Image
-          src={blogs.image}
-          alt=""
-          width={400}
-          height={400}
-          className="border-b border-black"
-        />
-      </Link>
       <p className="ml-5 mt-5 px-1 inline-block bg-black text-white text-sm">
         {blogs.category}
       </p>
@@ -26,7 +16,7 @@ const BlogItem = ({ blogs }: { blogs: Blog }) => {
           {blogs.description}
         </p>
         <Link
-          href={`blogs/${blogs.id}`}
+          href={`/blogs/${blogs.id}`}
           className="inline-flex items-center py-2 font-semibold text-center"
         >
           Read more <span className="ml-2">→</span>

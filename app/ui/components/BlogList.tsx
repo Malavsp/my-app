@@ -1,8 +1,9 @@
 import React from "react";
-import { blogs } from "@/lib/placeholder-data";
 import BlogItem from "./BlogItem";
+import { fetchAllBlogs } from "@/lib/data";
 
-const BlogList = () => {
+const BlogList = async () => {
+  const blogs = await fetchAllBlogs();
   return (
     <div>
       <div className="flex justify-center gap-6 my-10">
@@ -14,7 +15,7 @@ const BlogList = () => {
         <button>Lifestyle</button>
       </div>
       <div className="flex flex-wrap justify-around gap-1 gap-y-10 mb-16 xl:mx-24">
-        {blogs.map((item, i) => {
+        {blogs?.map((item, i) => {
           return <BlogItem key={item.id} blogs={item} />;
         })}
       </div>
