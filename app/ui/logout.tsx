@@ -1,17 +1,10 @@
-import { signOut } from "@/auth";
 import React from "react";
 import { Button } from "./button";
-import { redirect } from "next/navigation";
+import { logOut } from "@/lib/action/form";
 
 const Logout = () => {
   return (
-    <form
-      action={async () => {
-        "use server";
-        await signOut();
-        redirect("/");
-      }}
-    >
+    <form action={logOut}>
       <Button variant="outline">Logout</Button>
     </form>
   );

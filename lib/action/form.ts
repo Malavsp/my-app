@@ -1,6 +1,6 @@
 "use server";
 
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 import { sql } from "@vercel/postgres";
 import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
@@ -39,7 +39,7 @@ export type State = {
 };
 
 export const createBlog = async (previousData: State, formData: FormData) => {
-  console.log("Previous Data", previousData);
+  // console.log("Previous Data", previousData);
   const validatedFields = CreateBlog.safeParse({
     title: formData.get("title"),
     description: formData.get("description"),
@@ -145,4 +145,9 @@ export async function authenticate(
     }
     throw error;
   }
+}
+
+export async function logOut() {
+  await signOut();
+  redirect("/");
 }

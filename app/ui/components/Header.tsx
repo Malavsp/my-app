@@ -1,12 +1,17 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/app/ui/button";
 import Logout from "../logout";
-import { cookies } from "next/headers";
 
-const Header = () => {
-  const cookieStore = cookies();
-  const isLogin = cookieStore.has("authjs.session-token");
+const Header = ({ session }: { session: Boolean }) => {
+  // const cookieStore = cookies();
+  // const isLogin = cookieStore.has("authjs.session-token");
+  const [isLogin, setIsLogin] = useState(session);
+
+  useEffect(() => {
+    setIsLogin(session);
+  }, [session]);
 
   return (
     <div className="py-5 px-5 md:px-12 lg:px-28">
