@@ -134,6 +134,7 @@ export async function authenticate(
 ) {
   try {
     await signIn("credentials", formData);
+    revalidatePath("/");
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -149,5 +150,6 @@ export async function authenticate(
 
 export async function logOut() {
   await signOut();
+  revalidatePath("/");
   redirect("/");
 }
