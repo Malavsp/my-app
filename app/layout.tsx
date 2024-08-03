@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./ui/components/Header";
 import Footer from "./ui/components/Footer";
-import { cookies } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,14 +16,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = cookies();
-  const isLogin = cookieStore.has("authjs.session-token");
-
-  // console.log(isLogin);
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header session={isLogin} />
+        <Header />
         {children}
         <Footer />
       </body>

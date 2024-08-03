@@ -1,18 +1,20 @@
-"use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/app/ui/button";
 import Logout from "../logout";
+import { useRouter } from "next/navigation";
+import { cookies } from "next/headers";
 
-const Header = ({ session }: { session: Boolean }) => {
-  // const cookieStore = cookies();
-  // const isLogin = cookieStore.has("authjs.session-token");
-  const [isLogin, setIsLogin] = useState(session);
+const Header = () => {
+  const cookieStore = cookies();
+  const isLogin = cookieStore.has("authjs.session-token");
+  // const router = useRouter();
+  // const [isLogin, setIsLogin] = useState(session);
 
-  useEffect(() => {
-    setIsLogin(session);
-  }, [session]);
-
+  // useEffect(() => {
+  //   setIsLogin(session);
+  // }, [session]);
+  console.log(isLogin);
   return (
     <div className="py-5 px-5 md:px-12 lg:px-28">
       <div className="flex justify-between items-center">
