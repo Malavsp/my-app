@@ -4,17 +4,18 @@ import { Button } from "@/app/ui/button";
 import Logout from "../logout";
 import { useRouter } from "next/navigation";
 import { cookies } from "next/headers";
+import { getSession } from "next-auth/react";
+import { auth } from "@/auth";
 
-const Header = () => {
-  const cookieStore = cookies();
-  const isLogin = cookieStore.has("authjs.session-token");
-  // const router = useRouter();
-  // const [isLogin, setIsLogin] = useState(session);
-
-  // useEffect(() => {
-  //   setIsLogin(session);
-  // }, [session]);
+const Header = async () => {
+  const session = await auth(); //
+  const isLogin = !!session?.user;
   console.log(isLogin);
+  // const session = getSession();
+  console.log(session);
+  // const isLogin = cookieStore.has("authjs.session-token");
+  // const router = useRouter();
+
   return (
     <div className="py-5 px-5 md:px-12 lg:px-28">
       <div className="flex justify-between items-center">
